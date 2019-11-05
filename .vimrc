@@ -108,7 +108,13 @@ let g:jsx_ext_required = 1
 " :tabn   后一个 tab
 " gT      前一个 tab
 " gt      后一个 tab
+
 Bundle 'scrooloose/nerdtree'
+
+"启动关闭NERD_TREE的快捷键"
+silent! nmap <C-m> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+
 " git
 Bundle 'https://github.com/jistr/vim-nerdtree-tabs.git'
 Bundle 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
@@ -327,9 +333,6 @@ set showcmd
 "光标移动到buffer的顶部和底部时保持3行距离
 set scrolloff=3
 
-"高亮显示对应的括号
-set showmatch
-
 "对应括号高亮的时间（单位是十分之一秒）
 set matchtime=5
 
@@ -424,9 +427,19 @@ let mapleader=","
 " set whichwrap=b,s,<,>,[,]
 " 开启Normal或Visual模式下Backspace键，空格键，左方向键，右方向键，Insert或replace模式下左方向键，右方向键跳行的功能。
 
-"启动关闭NERD_TREE的快捷键"
-silent! nmap <C-m> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-
-"nmap <silent> <F5> :NERDTree<CR>
 "split出来两个窗口切换有快捷键ctrl+w+h,ctrl+w+j,ctrl+w+k或者trl+w+l，h-j-k-l四个字母分别代表左、下、上、右，也可以用方向键代替，比如ctrl+w+右箭头。
+
+"" Copy/Paste/Cut
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
+
+noremap YY "+y<CR>
+noremap <leader>p "+gP<CR>
+noremap XX "+x<CR>
+
+if has('macunix')
+  " pbcopy for OSX copy/paste
+  vmap <C-x> :!pbcopy<CR>
+  vmap <C-c> :w !pbcopy<CR><CR>
+endif
