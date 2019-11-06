@@ -118,7 +118,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeT
 " git
 Bundle 'https://github.com/jistr/vim-nerdtree-tabs.git'
 Bundle 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
-let g:NERDTreeShowIgnoredStatus = 1
+let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
