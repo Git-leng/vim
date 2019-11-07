@@ -114,6 +114,14 @@ Bundle 'scrooloose/nerdtree'
 "启动关闭NERD_TREE的快捷键"
 silent! nmap <C-m> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+" 设置 NERDTree 子窗口宽度
+" let NERDTreeWinSize=22
+" 设置 NERDTree 子窗口位置
+let NERDTreeWinPos="right"
+" NERDTree 子窗口中不显示冗余帮助信息
+let NERDTreeMinimalUI=1
+" 删除文件时自动删除文件对应 buffer
+let NERDTreeAutoDeleteBuffer=1
 
 " git
 Bundle 'https://github.com/jistr/vim-nerdtree-tabs.git'
@@ -158,7 +166,7 @@ let g:ctrlp_custom_ignore = {'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|
 
 " Bundle 'msanders/snipmate.vim'
 Bundle   'Shougo/neocomplcache.vim'
-"自动补全
+" 自动补全
 Bundle                              'Townk/vim-autoclose'
 Bundle                              'Lokaltog/vim-easymotion'
 Bundle                              'terryma/vim-multiple-cursors'
@@ -345,8 +353,7 @@ set wildmenu
 "字符间插入的像素行数目
 set linespace=2
 
-"新建文件编码
-set fenc=utf-8
+" 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
 set autoindent
 set hidden
 
@@ -372,10 +379,6 @@ set isk+=-
 
 " 设置当文件被改动时自动载入  
 " set autoread
-
-" 选中状态下 Ctrl+c 复制
-"vmap <C-c> "+y
-"共享粘贴板
 
 "设置光标高亮显示
 "设置光标行
